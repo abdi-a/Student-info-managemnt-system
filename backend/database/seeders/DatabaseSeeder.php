@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Department;
+use App\Models\Course;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +15,49 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // Admin
+        User::create([
+            'name' => 'System Admin',
+            'email' => 'admin@sims.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Departments
+        $cs = Department::create([
+            'name' => 'Computer Science',
+            'code' => 'CS',
+            'description' => 'Department of Computer Science'
+        ]);
+        
+        $eng = Department::create([
+            'name' => 'Engineering',
+            'code' => 'ENG',
+            'description' => 'Department of Engineering'
+        ]);
+
+        // Course
+        Course::create([
+            'department_id' => $cs->id,
+            'code' => 'CS101',
+            'title' => 'Intro to Programming',
+            'credits' => 3
+        ]);
+        
+        // Student User
+        User::create([
+            'name' => 'John Student',
+            'email' => 'student@sims.com',
+            'password' => Hash::make('password'),
+            'role' => 'student',
+        ]);
+        
+        // Instructor User
+        User::create([
+            'name' => 'Dr. Smith',
+            'email' => 'instructor@sims.com',
+            'password' => Hash::make('password'),
+            'role' => 'instructor',
+        ]);
     }
 }
