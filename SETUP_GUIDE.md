@@ -56,20 +56,27 @@ The following configurations have been applied:
 
 ## 4. Frontend Setup (Next.js)
 
-Since the automated setup encountered an issue verify your `npm` installation. You can create the frontend manually:
+The frontend has been initialized.
+The following files have been created for you:
+- `src/lib/axios.ts`: Axios instance configured for API requests.
+- `src/app/login/page.tsx`: Login page connected to the backend.
+- `src/app/dashboard/page.tsx`: Dashboard overview.
+- `src/app/dashboard/layout.tsx`: Sidebar layout.
 
-1.  Open a terminal in the root folder `Student-info-managemnt-system`.
-2.  Run:
+### Next Steps for Frontend:
+1.  Open a new terminal in `Student-info-managemnt-system/frontend`:
     ```bash
-    npx create-next-app@latest frontend
+    cd frontend
     ```
-    - Choose **Yes** for TypeScript, ESLint, Tailwind CSS, App Router.
-
-3.  **Copy the assets**:
-    - I have placed example frontend code in the `guide_assets` folder.
-    - Copy `guide_assets/frontend_pages/dashboard_page.tsx` to `frontend/src/app/dashboard/page.tsx` (create folder if needed).
-    - Copy `guide_assets/frontend_pages/dashboard_layout.tsx` to `frontend/src/app/dashboard/layout.tsx`.
-    - Follow the **Next.js Authentication Guide** in `guide_assets/nextjs_auth_guide.md` to set up Login.
+2.  Install Axios (required for API calls):
+    ```bash
+    npm install axios
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+    Visit `http://localhost:3000/login` to test the login.
 
 ---
 
