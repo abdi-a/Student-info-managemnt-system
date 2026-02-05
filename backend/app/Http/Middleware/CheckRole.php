@@ -8,10 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
 {
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next, string $roles): Response
     {
-        if (! $request->user() || $request->user()->role !== $role) {
-            // Also allow admin to access everything? Maybe not for now.
+        $allowedRoles = explode('|', $roles);
+        
+        if (! $request->user() || !in_array($request->user()->role, $allowedRoles)) {
+            // Also allow admin to access everything (optional, but good for superadmin)
             if ($request->user()->role === 'admin') {
                 return $next($request);
             }

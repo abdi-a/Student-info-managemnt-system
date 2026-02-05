@@ -59,5 +59,13 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'instructor',
         ]);
+
+        // Department User
+        User::create([
+            'name' => 'Department Admin',
+            'email' => 'department@sims.com',
+            'password' => Hash::make('password'),
+            'role' => 'department',
+        ]);
     }
 }

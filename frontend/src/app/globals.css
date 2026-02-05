@@ -12,10 +12,13 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Force light mode base variables even if system is dark, 
+   since we are building a custom detailed UI that controls its own colors */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+     /* Reset to light mode defaults for now to ensure visibility on white cards */
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 

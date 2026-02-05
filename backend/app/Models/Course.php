@@ -15,4 +15,16 @@ class Course extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function instructors()
+    {
+        return $this->belongsToMany(Instructor::class, 'course_instructor')
+                    ->withPivot('section', 'id')
+                    ->withTimestamps();
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
 }
