@@ -22,7 +22,8 @@ export default function LoginPage() {
             router.push('/dashboard');
         } catch (error: any) {
             console.error(error);
-            alert('Login Failed: ' + (error.response?.data?.message || 'Unknown error'));
+            const message = error.response?.data?.message || error.message || 'Unknown error';
+            alert('Login Failed: ' + message);
         }
     };
 
